@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Card } from "flowbite-react";
+import { Card, Button } from "flowbite-react";
 
 function App() {
   const [content, setContent] = useState("");
@@ -19,9 +19,11 @@ function App() {
 
   return (
     <>
-      <Card className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img src={content.data.images.jpg.image_url} alt="" />
-        <h1>{content.data.title}</h1>
+      <Card className="m-auto my-auto font-mono" horizontal>
+        <img id="anime_img" src={content.data.images.jpg.image_url} alt="" />
+        <h1 className="self-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {content.data.title}
+        </h1>
         <p>
           Genre:{" "}
           {content.data.genres.map((genre) => (
@@ -34,10 +36,14 @@ function App() {
         <p>Episodes: {content.data.episodes}</p>
         <p>Synopsis: {content.data.synopsis}</p>
         <p>Score: {content.data.score}</p>
-        <a href={content.data.url} target="_blank" rel="noopener noreferrer">
-          More Info
-        </a>
-        <button onClick={refreshPage}>Click for a new anime!</button>
+        <Button color="blue" pill>
+          <a href={content.data.url} target="_blank" rel="noopener noreferrer">
+            Click for more info!
+          </a>
+        </Button>
+        <Button color="success" pill onClick={refreshPage}>
+          Click for a new anime!
+        </Button>
       </Card>
     </>
   );
