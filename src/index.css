@@ -4,8 +4,9 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #0c359eb6;
 }
 #anime_img {
-  width: auto;
+  width: 600px;
   height: 500px;
 }
